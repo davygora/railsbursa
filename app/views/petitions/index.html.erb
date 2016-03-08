@@ -36,15 +36,18 @@
   <tr>
     <th>Петиция</th>
     <th>Автор</th>
+    <th>Голоса</th>
+    <th>Дата создания</th>
   </tr> 
   <% @petitions.each do |petition| %>
     <tr>
       <td><%= link_to "#{petition.title}", petition_path(petition) %></td>
       <td><%= petition.user.first_name %></td>
+      <td> golos </td>
+      <td><%= petition.created_at.strftime("%d/%m/%Y %H:%M") %></td>
     </tr>
   <% end %>
   </table>
-
   <% end %>
 </div>
 
