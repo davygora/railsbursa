@@ -1,0 +1,71 @@
+<div class="panel panel-default">
+  <% if params[:my].to_s == 'true' %>
+    <div class="panel-heading"><h5>Мои петиции</h5></div>
+    <table class="table">
+  <tr>
+    <th>Петиция</th>
+    <th>Автор</th>
+  </tr> 
+  <% @petitions.each do |petition| %>
+    <tr>
+      <td><%= link_to "#{petition.title}", petition_path(petition) %></td>
+      <td><%= petition.user.first_name %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <% elsif params[:status].to_s == 'all' %>
+  <div class="panel-heading"><h5>Все петиции</h5></div>
+  <table class="table">
+  <tr>
+    <th>Петиция</th>
+    <th>Автор</th>
+  </tr> 
+  <% @petitions.each do |petition| %>
+    <tr>
+      <td><%= link_to "#{petition.title}", petition_path(petition) %></td>
+      <td><%= petition.user.first_name %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <% else %>
+
+  <div class="panel-heading"><h5>Последние петиции</h5></div>
+  <table class="table">
+  <tr>
+    <th>Петиция</th>
+    <th>Автор</th>
+  </tr> 
+  <% @petitions.each do |petition| %>
+    <tr>
+      <td><%= link_to "#{petition.title}", petition_path(petition) %></td>
+      <td><%= petition.user.first_name %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
