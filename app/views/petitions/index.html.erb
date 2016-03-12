@@ -4,16 +4,21 @@
     <table class="table">
   <tr>
     <th>Петиция</th>
-    <th>Автор</th>
+    <th>Голоса</th>
+    <th>Дата создания</th>
+    <th>Действия</th>
   </tr> 
   <% @petitions.each do |petition| %>
     <tr>
       <td><%= link_to "#{petition.title}", petition_path(petition) %></td>
       <td><%= petition.user.first_name %></td>
+      <td><%= petition.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+      <td><%= link_to 'Изменить', edit_petition_path(petition)%>
+      <%= link_to 'Удалить', root_path%></td>
     </tr>
   <% end %>
   </table>
-
+</div>
   <% elsif params[:status].to_s == 'all' %>
   <div class="panel-heading"><h5>Все петиции</h5></div>
   <table class="table">
@@ -28,6 +33,7 @@
     </tr>
   <% end %>
   </table>
+</div>
 
   <% else %>
 
@@ -49,26 +55,4 @@
   <% end %>
   </table>
   <% end %>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
