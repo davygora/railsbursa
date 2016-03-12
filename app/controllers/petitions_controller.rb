@@ -2,7 +2,7 @@ class PetitionsController < ApplicationController
 
   COUNT_PET = 10
 
-  before_filter :authorize, only: [:new, :edit, :update]
+   before_filter :authorize, only: [:new, :edit, :update, :delete]
 
   def index
     if params[:my].present? and params[:my].to_s == 'true'
@@ -34,11 +34,22 @@ class PetitionsController < ApplicationController
 
   def update
     @petition = Petition.find(params[:id])
-    if @petition.update(petition_params)
+    if @petition.user.id != current_user.id
+      redirect_to root_path, notice: 'ERROR!'
+    else 
+      if @petition.update(petition_params)
       redirect_to @petition
-    else
-      render 'edit'
+      else
+        render 'edit'
+      end
     end
+  end
+
+  def destroy
+    @petition = Petition.find(params[:id])
+    @petition.destroy
+
+    redirect_to petitions_path(:my => 'true'), notice: "Петиция удалена!"
   end
 
 private
