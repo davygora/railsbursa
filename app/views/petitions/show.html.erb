@@ -5,8 +5,15 @@
   <strong>Title:</strong>
   <%= @petition.title %>
 </p>
- 
 <p>
-  <strong>Text:</strong>
-  <%= @petition.text %>
+<h6><%= @petition.created_at.strftime("%d/%m/%Y %H:%M") %></h6>
+</p> 
+<p>
+<%= @petition.text %>
+</p>
+<p>
+<strong>Голосов: </strong>
+</p>
+<p>
+<%= button_to "Поддержать", vote_path(user_id: @petition.user.id, petition_id: @petition) %>
 </p>
