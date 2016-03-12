@@ -21,6 +21,10 @@ class PetitionsController < ApplicationController
   def new
   end
 
+  def edit
+    @petition = Petition.find(params[:id])
+  end
+
   def create
     @petition = current_user.petitions.build(petition_params)
 
@@ -29,6 +33,12 @@ class PetitionsController < ApplicationController
   end
 
   def update
+    @petition = Petition.find(params[:id])
+    if @petition.update(petition_params)
+      redirect_to @petition
+    else
+      render 'edit'
+    end
   end
 
 private
