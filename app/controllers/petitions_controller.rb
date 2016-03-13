@@ -38,7 +38,7 @@ class PetitionsController < ApplicationController
       redirect_to root_path, notice: 'Нету доступа!'
     else 
       if @petition.update(petition_params)
-      redirect_to @petition
+      redirect_to @petition, notice: 'Петиция изменена!'
       else
         render 'edit'
       end
@@ -52,10 +52,11 @@ class PetitionsController < ApplicationController
     redirect_to petitions_path(:my => 'true'), notice: "Петиция удалена!"
   end
 
-  def upvote
-    @petition = Petition.find([params[:id]])
-    @petition.votes.create
-    redirect_to petitions_path, notice: 'Спасибо за голос!'
+  def vote
+    value = params[:type] == "up" ? 1 : -1
+    @petition = Petition.find(params[:id])
+    @petition.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back, notice: "Спасибо за голос!"
   end
 
 private

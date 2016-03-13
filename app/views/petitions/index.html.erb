@@ -51,7 +51,7 @@
     <tr>
       <td><%= link_to "#{petition.title}", petition_path(petition) %></td>
       <td><%= petition.user.first_name %></td>
-      <td><%= button_to "+1", upvote_petition_path(petition), method: :post %></td>
+      <td><%= petition.reputation_for(:votes).to_i %></td>
       <td><%= petition.created_at.strftime("%d/%m/%Y %H:%M") %></td>
     </tr>
   <% end %>

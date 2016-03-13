@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :petitions do 
-    member do
-      post 'upvote'
-    end
+  resources :petitions do
+    member { post :vote}
   end
 
   resources :users, :sessions, :votes

@@ -12,8 +12,11 @@
 <%= @petition.text %>
 </p>
 <p>
-<strong>Голосов: </strong>
+<strong>Голосов: <%= @petition.reputation_for(:votes).to_i %> </strong>
+
 </p>
-<p>
-<%= button_to "Поддержать", upvote_petition_path(@petition), method: :post %>
-</p>
+<% if current_user && !current_user.voted_for?(@petition) %>
+  <p>
+  <%= link_to "Поддержать", vote_petition_path(@petition, type: "up"), method: :post %>
+  </p>
+<% end %>
