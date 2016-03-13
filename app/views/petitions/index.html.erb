@@ -14,7 +14,9 @@
       <td><%= petition.user.first_name %></td>
       <td><%= petition.created_at.strftime("%d/%m/%Y %H:%M") %></td>
       <td><%= link_to 'Изменить', edit_petition_path(petition)%>
-      <%= link_to 'Удалить', root_path%></td>
+      <%= link_to 'Удалить', petition_path(petition),
+          method: :delete,
+          data: { confirm: 'Удалить петицию?' }%></td>
     </tr>
   <% end %>
   </table>
@@ -49,7 +51,7 @@
     <tr>
       <td><%= link_to "#{petition.title}", petition_path(petition) %></td>
       <td><%= petition.user.first_name %></td>
-      <td> golos </td>
+      <td><%= button_to "+1", upvote_petition_path(petition), method: :post %></td>
       <td><%= petition.created_at.strftime("%d/%m/%Y %H:%M") %></td>
     </tr>
   <% end %>

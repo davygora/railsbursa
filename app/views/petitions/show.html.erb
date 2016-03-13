@@ -15,5 +15,5 @@
 <strong>Голосов: </strong>
 </p>
 <p>
-<%= button_to "Поддержать", vote_path(user_id: @petition.user.id, petition_id: @petition) %>
+<%= button_to "Поддержать", upvote_petition_path(@petition), method: :post %>
 </p>

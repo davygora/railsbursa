@@ -4,7 +4,13 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :users,:petitions, :sessions
+  resources :petitions do 
+    member do
+      post 'upvote'
+    end
+  end
+
+  resources :users, :sessions, :votes
   root 'petitions#index'
 
   # The priority is logeinbased upon order of creation: first created -> highest priority.

@@ -22,7 +22,7 @@
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, id: "flash_#{name}" %>
   <% end %>
-<ul class="nav nav-pills nav-stacked" style="max-width: 200px;">
+<ul class="nav nav-pills">
   <% if current_user %>
     <li><%= link_to 'Все петиции', petitions_path(:status => 'all') %></li>
     <li><%= link_to 'Создать петицию', new_petition_path %></li>
