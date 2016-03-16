@@ -4,16 +4,23 @@
     <table class="table">
   <tr>
     <th>Петиция</th>
-    <th>Автор</th>
+    <th>Голоса</th>
+    <th>Дата создания</th>
+    <th>Действия</th>
   </tr> 
   <% @petitions.each do |petition| %>
     <tr>
       <td><%= link_to "#{petition.title}", petition_path(petition) %></td>
       <td><%= petition.user.first_name %></td>
+      <td><%= petition.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+      <td><%= link_to 'Изменить', edit_petition_path(petition)%>
+      <%= link_to 'Удалить', petition_path(petition),
+          method: :delete,
+          data: { confirm: 'Удалить петицию?' }%></td>
     </tr>
   <% end %>
   </table>
-
+</div>
   <% elsif params[:status].to_s == 'all' %>
   <div class="panel-heading"><h5>Все петиции</h5></div>
   <table class="table">
@@ -28,6 +35,7 @@
     </tr>
   <% end %>
   </table>
+</div>
 
   <% else %>
 
@@ -36,36 +44,17 @@
   <tr>
     <th>Петиция</th>
     <th>Автор</th>
+    <th>Голоса</th>
+    <th>Дата создания</th>
   </tr> 
   <% @petitions.each do |petition| %>
     <tr>
       <td><%= link_to "#{petition.title}", petition_path(petition) %></td>
       <td><%= petition.user.first_name %></td>
+      <td><%= petition.reputation_for(:votes).to_i %></td>
+      <td><%= petition.created_at.strftime("%d/%m/%Y %H:%M") %></td>
     </tr>
   <% end %>
   </table>
-
   <% end %>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
