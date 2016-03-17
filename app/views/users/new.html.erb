@@ -1,5 +1,4 @@
-<h1>Sign Up</h1>
-
+<h1>Регистрация</h1>
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
     <div class="errors_messages">
@@ -11,26 +10,29 @@
       </ul>
     </div>
   <% end %>
-
+<form class="form-signin">
   <div class="field">
-   <%= f.label :email %><br />
+   <%= f.label "Email" %><br />
    <%= f.text_field :email %>
   </div>
   <div class="field">
-   <%= f.label :first_name %><br />
+   <%= f.label "Имя" %><br />
    <%= f.text_field :first_name %>
   </div>
   <div class="field">
-   <%= f.label :last_name %><br />
+   <%= f.label "Фамилия" %><br />
    <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label "Пароль" %><br />
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label "Подтверждение пароля" %><br />
     <%= f.password_field :password_confirmation %>
   </div>
-  <div class="actions"><%= f.submit %></div>
+  <div class="actions">
+    <%= f.submit "Зарегистрироваться" %>
+  </div>
 <% end %>
+</form>
