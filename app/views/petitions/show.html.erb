@@ -15,7 +15,7 @@
 <strong>Голосов: <%= @petition.reputation_for(:votes).to_i %> </strong>
 
 </p>
-<% if current_user && !current_user.voted_for?(@petition) %>
+<% if current_user && !current_user.voted_for?(@petition) && @petition.published? == false%>
   <p>
   <%= link_to "Поддержать", vote_petition_path(@petition, type: "up"), method: :post %>
   </p>
