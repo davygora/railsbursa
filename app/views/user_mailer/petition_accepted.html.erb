@@ -1,0 +1,5 @@
+<h1>Здравствуйте, <%= [@user.first_name, @user.last_name].join(' ') %>!</h1>
+<p>
+  Ваша петиция <%= @petition.title %>
+  собрала <%= @petition.reputation_for(:votes).to_i %> голосов  и будет рассмотрена.
+</p>
