@@ -23,6 +23,9 @@ class PetitionsController < ApplicationController
 
   def edit
     @petition = Petition.find(params[:id])
+    if @petition.published?.to_s == "true"
+      redirect_to @petition, notice: 'Петиция просрочена, обновить нельзя!'
+    end
   end
 
   def create
@@ -34,9 +37,7 @@ class PetitionsController < ApplicationController
 
   def update
     @petition = Petition.find(params[:id])
-    if @petition.published?
-      redirect_to @petition, notice: 'Петиция просрочена, обновить нельзя!'
-    end
+
     if @petition.user.id != current_user.id
       redirect_to root_path, notice: 'Нету доступа!'
     else 
