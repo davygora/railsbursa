@@ -1,5 +1,7 @@
 class Petition < ActiveRecord::Base
 
+  VALIDITY = 30
+
   belongs_to :user
   has_reputation :votes, source: :user, aggregated_by: :sum
 
@@ -7,6 +9,6 @@ class Petition < ActiveRecord::Base
   validates :text, presence: true
 
   def published?
-    created_at < 30.day.ago
+    created_at < VALIDITY.day.ago
   end
 end

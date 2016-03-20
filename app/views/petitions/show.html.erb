@@ -13,7 +13,6 @@
 </p>
 <p>
 <strong>Голосов: <%= @petition.reputation_for(:votes).to_i %> </strong>
-
 </p>
 <% if current_user && !current_user.voted_for?(@petition) && @petition.published? == false%>
   <p>
