@@ -13,7 +13,7 @@
       <td><%= link_to "#{petition.title}", petition_path(petition) %></td>
       <td><%= petition.user.first_name %></td>
       <td><%= petition.created_at.strftime("%d/%m/%Y %H:%M") %></td>
-      <td><%= link_to 'Изменить', edit_petition_path(petition)%>
+      <td><%= link_to 'Изменить', edit_petition_path(petition) unless petition.published? %>
       <%= link_to 'Удалить', petition_path(petition),
           method: :delete,
           data: { confirm: 'Удалить петицию?' }%></td>

@@ -1,13 +1,16 @@
-<h1>Вход</h1>
-
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email] %>
+<h1 align="center">Вход</h1>
+<div class="input-group">
+  <%= form_tag sessions_path do %>
+    <div class="form-group" >
+      <%= label_tag "Email" %><br />
+      <%= text_field_tag :email, params[:email], class: 'form-control' %>
+    </div>
+    <div class="form-group" >
+      <%= label_tag "Пароль" %><br />
+      <%= password_field_tag :password, nil, class: 'form-control' %>
+    </div>
+    <div class="actions" >
+      <%= submit_tag "Вход", class: 'btn btn-primary' %>
+    </div>
   </div>
-  <div class="field">
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions"><%= submit_tag "Вход" %></div>
 <% end %>
