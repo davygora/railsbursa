@@ -1,0 +1,31 @@
+<h1>Редактировать петицию</h1>
+
+<%= form_for :petition, url: petition_path(@petition), method: :patch do |f| %>
+  <% if @petition.errors.any? %>
+    <div id="erorr_explanation">
+    <h2>
+      <%= pluralize(@petition.erorrs.count, "error") %> prohibited
+      this petition from being saved:
+    </h2>
+    <ul>
+      <% @petiton.erorrs.full_messages.each do |msg| %>
+        <li><% msg %></li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

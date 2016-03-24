@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Онлайн петиции</title>
+  <%= stylesheet_link_tag "application", params[:controller], :media => "all",
+  'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</head>
+<body>
+
+<%= render 'shared/navbar' %>
+<%= yield %>
+
+</body>
+</html>

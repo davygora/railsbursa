@@ -1,0 +1,6 @@
+<h1>Здравствуйте, <%= [@user.first_name, @user.last_name].join(' ') %>!</h1>
+<p>
+  К сожалению, ваша петиция <%= @petition.title %>
+  собрала только <%= @petition.reputation_for(:votes).to_i %> голосов из
+  необходимых 100 голосов.
+</p> 

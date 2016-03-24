@@ -1,0 +1,16 @@
+<h2>Новая петиция</h2>
+<%= form_for :petition, url: petitions_path do |p| %>
+  <p>
+    <%= p.label :title %><br>
+    <%= p.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= p.label :text %><br>
+    <%= p.text_area :text %>
+  </p>
+ 
+  <p>
+    <%= p.submit %>
+  </p>
+<% end %>
