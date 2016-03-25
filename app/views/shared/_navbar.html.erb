@@ -24,13 +24,13 @@
   <% end %>
 <ul class="nav nav-pills">
   <% if current_user %>
-    <li><%= link_to 'Все петиции', petitions_path(:status => 'all') %></li>
-    <li><%= link_to 'Создать петицию', new_petition_path %></li>
+    <li><%= active_link_to 'Все петиции', petitions_path(:status => 'all') %></li>
+    <li><%= active_link_to 'Создать петицию', new_petition_path %></li>
     <!-- когда передаю параметр  true (boolean) тогда не работает не смог понять почему :( а если string то все ок-->
-    <li><%= link_to 'Мои петиции', petitions_path(:my => 'true') %></li>
+    <li><%= active_link_to 'Мои петиции', petitions_path(:my => 'true') %></li>
   <% else %>
-    <li><%= link_to 'Все петиции', petitions_path(:status => 'all') %></li>
-    <li><%= link_to 'Создать петицию', new_petition_path %></li>
+    <li><%= active_link_to 'Все петиции', petitions_path(:status => 'all') %></li>
+    <li><%= active_link_to 'Создать петицию', new_petition_path %></li>
   <% end %>
 </ul>
 </body>

@@ -37,7 +37,6 @@ class PetitionsController < ApplicationController
 
   def update
     @petition = Petition.find(params[:id])
-
     if @petition.user.id != current_user.id
       redirect_to root_path, notice: 'Нету доступа!'
     else 
@@ -52,7 +51,6 @@ class PetitionsController < ApplicationController
   def destroy
     @petition = Petition.find(params[:id])
     @petition.destroy
-
     redirect_to petitions_path(:my => 'true'), notice: "Петиция удалена!"
   end
 
