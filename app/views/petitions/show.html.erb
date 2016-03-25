@@ -6,13 +6,13 @@
   <%= @petition.title %>
 </p>
 <p>
-<h6><%= @petition.created_at.strftime("%d/%m/%Y %H:%M") %></h6>
+  <h6><%= @petition.created_at.strftime("%d/%m/%Y %H:%M") %></h6>
 </p> 
 <p>
-<%= @petition.text %>
+  <%= @petition.text %>
 </p>
 <p>
-<strong>Голосов: <%= @petition.reputation_for(:votes).to_i %> </strong>
+  <strong>Голосов: <%= @petition.reputation_for(:votes).to_i %> </strong>
 </p>
 <% if current_user && !current_user.voted_for?(@petition) && @petition.published? == false%>
   <p>
