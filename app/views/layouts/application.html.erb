@@ -7,10 +7,26 @@
   <%= csrf_meta_tags %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
-<body>
-  <%= render 'shared/navbar' %>
-  <%= bootstrap_flash %>
-  <%= yield %>
-
-</body>
+  <body>
+    <%= render 'shared/navbar' %>
+    <%= bootstrap_flash %>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="col-xs-12 col-sm-6 col-md-9">
+          <%= yield %>
+       </div>
+        <div class="col-xs-6 col-md-3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list la">
+              <li><%= active_link_to 'Все петиции', petitions_path(:status => 'all') %></li>
+              <li><%= active_link_to 'Создать петицию', new_petition_path %></li>
+              <% if current_user %>
+                <li><%= link_to "Мои петиции", petitions_path(:my => 'true') %></li>
+              <% end %>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        </div><!--/row-->
+    </div> <!-- /container -->
+  </body>
 </html>

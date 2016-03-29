@@ -1,10 +1,8 @@
 <nav class="navbar navbar-default " role="navigation">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <li class="navbar-brand"><%= link_to 'Онлайн петиции нашего района', root_path %> </li> 
     </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
@@ -18,20 +16,3 @@
     </div>
   </div>
 </nav>
-<body>
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, id: "flash_#{name}" %>
-  <% end %>
-<ul class="nav nav-pills">
-  <% if current_user %>
-    <li><%= active_link_to 'Все петиции', petitions_path(:status => 'all') %></li>
-    <li><%= active_link_to 'Создать петицию', new_petition_path %></li>
-    <!-- когда передаю параметр  true (boolean) тогда не работает не смог понять почему :( а если string то все ок-->
-    <li><%= active_link_to 'Мои петиции', petitions_path(:my => 'true') %></li>
-  <% else %>
-    <li><%= active_link_to 'Все петиции', petitions_path(:status => 'all') %></li>
-    <li><%= active_link_to 'Создать петицию', new_petition_path %></li>
-  <% end %>
-</ul>
-</body>
-
