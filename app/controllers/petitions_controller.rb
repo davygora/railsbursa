@@ -19,6 +19,7 @@ class PetitionsController < ApplicationController
   end
 
   def new
+    @petition = current_user.petitions.new
   end
 
   def edit
@@ -31,8 +32,11 @@ class PetitionsController < ApplicationController
   def create
     @petition = current_user.petitions.build(petition_params)
 
-    @petition.save
-    redirect_to @petition
+    if @petition.save
+      redirect_to @petition, notice: 'Петиция создана!'
+    else
+      render 'new'
+    end
   end
 
   def update
