@@ -13,7 +13,7 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="col-xs-12 col-sm-6 col-md-9">
-          <%= yield %>      
+          <%= yield %>
        </div>
         <div class="col-xs-6 col-md-3">
           <div class="well sidebar-nav">
@@ -21,16 +21,18 @@
               <li><%= active_link_to 'Все петиции', petitions_path(:status => 'all') %></li>
               <li><%= active_link_to 'Создать петицию', new_petition_path %></li>
               <% if current_user %>
-                <li><%= link_to "Мои петиции", petitions_path(:my => 'true') %></li>
+                <li><%= active_link_to "Мои петиции", petitions_path(:my => 'true') %></li>
               <% end %>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
       </div><!--/row-->
       <footer class="footer">
-        <p class="text-muted text-center">
-          by <a href="https://github.com/davygora">@davygora</a>
-        </p>
+        <div class="panel-footer">
+          <p class="text-muted text-center">
+            by <a href="https://github.com/davygora">@davygora</a>
+          </p>
+        </div>
       </footer>
     </div> <!-- /container -->
   </body>

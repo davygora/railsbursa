@@ -1,21 +1,15 @@
-<p>
-  Петиция:
-</p>
-<p>
-  <strong>Title:</strong>
-  <%= @petition.title %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @petition.title %></div>
+    <div class="panel-body"><%= @petition.text %></div>
+</div>
 <p>
   <h6><%= @petition.created_at.strftime("%d/%m/%Y %H:%M") %></h6>
-</p> 
-<p>
-  <%= @petition.text %>
 </p>
 <p>
   <strong>Голосов: <%= @petition.reputation_for(:votes).to_i %> </strong>
 </p>
 <% if current_user && !current_user.voted_for?(@petition) && @petition.published? == false%>
   <p>
-  <%= link_to "Поддержать", vote_petition_path(@petition, type: "up"), method: :post %>
+    <%= link_to "Поддержать", vote_petition_path(@petition, type: "up"), method: :post %>
   </p>
 <% end %>
