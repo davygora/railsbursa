@@ -21,7 +21,7 @@
               <li><%= active_link_to 'Все петиции', petitions_path(:status => 'all') %></li>
               <li><%= active_link_to 'Создать петицию', new_petition_path %></li>
               <% if current_user %>
-                <li><%= active_link_to "Мои петиции", petitions_path(:my => 'true') %></li>
+                <li><%= active_link_to "Мои петиции", petitions_path(my: true) %></li>
               <% end %>
             </ul>
           </div><!--/.well -->
