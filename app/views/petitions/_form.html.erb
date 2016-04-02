@@ -1,4 +1,4 @@
-<%= form_for :petition, :html => {:class => 'form'}, url: petitions_path do |f| %>
+<%= form_for @petition, :html => {:class => 'form'} do |f| %>
   <% if @petition.errors.any? %>
     <div id="error_explanation">
       <h2>
