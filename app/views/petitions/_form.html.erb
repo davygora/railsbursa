@@ -1,0 +1,28 @@
+<%= form_for :petition, :html => {:class => 'form'}, url: petitions_path do |f| %>
+  <% if @petition.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@petition.errors.count, "error") %> prohibited
+        this petition from being saved:
+      </h2>
+      <ul>
+        <% @petition.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, 'Название' %><br />
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :text, 'Описание' %><br />
+    <%= f.text_area :text, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= submit_tag @petition.new_record? ? 'Cоздать' : 'Сохранить', class: 'btn btn-success' %>
+  </div>
+<% end %>
+</div>

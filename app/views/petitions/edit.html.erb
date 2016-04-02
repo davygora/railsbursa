@@ -1,29 +1,5 @@
-<h1>Редактировать петицию</h1>
+<div class="panel panel-default">
+  <div class="panel-heading"><h5>Редактировать петицию</h5></div>
+    <%= render 'form' %>
+</div>
 
-<%= form_for :petition, url: petition_path(@petition), method: :patch do |f| %>
-  <% if @petition.errors.any? %>
-    <div id="erorr_explanation">
-    <h2>
-      <%= pluralize(@petition.erorrs.count, "error") %> prohibited
-      this petition from being saved:
-    </h2>
-    <ul>
-      <% @petiton.erorrs.full_messages.each do |msg| %>
-        <li><% msg %></li>
-      <% end %>
-    </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :title, 'Название' %><br />
-    <%= f.text_field :title, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :text, 'Описание' %><br />
-    <%= f.text_area :text, class: 'form-control' %>
-  </div>
-  <div class="actions">
-    <%= submit_tag @petition.new_record? ? 'Cоздать' : 'Сохранить', class: 'btn btn-success' %>
-  </div>
-<% end %>
