@@ -3,21 +3,25 @@
     <div class="panel-body"><%= @petition.text %></div>
 </div>
 <p>
+  <h6><%= @petition.user.first_name %> | <%= @petition.user.email%></h6>
+<p>
+<p>
   <h6><%= @petition.created_at.strftime("%d/%m/%Y %H:%M") %></h6>
 </p>
-<p>
-<h6><%= @petition.user.first_name %> | <%= @petition.user.email%></h6>
-<p>
   <strong>Голосов: <%= @petition.reputation_for(:votes).to_i %> </strong>
 </p>
 <p>
+<% if !current_user %>
+  Вы не можете проголосовать за даную петицию!
+<% else %>
   <% if current_user.voted_for?(@petition) %>
     Вы уже проголосовали!
   <% else %>
     <% if @petition.published? %>
-      Голосование окончено!
+      Голосование окончено! 
     <% else %>
       <%= link_to 'up', vote_petition_path(@petition, type: "up"), method: :post unless @petition.owner?(current_user) %>
     <% end %>
-  <% end%>
+  <% end %>
+<% end%>
 </p>
