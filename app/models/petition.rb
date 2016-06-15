@@ -11,6 +11,10 @@ class Petition < ActiveRecord::Base
   scope :published, -> { where("created_at <= ?", VALIDITY.days.ago.beginning_of_day) }
 
   def published?
-    created_at < VALIDITY.day.ago.beginning_of_day
+    created_at < VALIDITY.days.ago
+  end
+
+  def owner?(other_user)
+    user == other_user
   end
 end
